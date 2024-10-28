@@ -275,3 +275,17 @@ from HOADON a
 SELECT AVG(a.TRIGIA)
 from HOADON a
 where a.NGHD like '2006-%'
+/*21. Tính doanh thu bán hàng trong năm 2006.*/
+SELECT SUM(a.TRIGIA)
+from HOADON a
+where a.NGHD like '2006%'
+/*22. Tìm số hóa đơn có trị giá cao nhất trong năm 2006.*/
+SELECT MAX(a.TRIGIA) 
+from HOADON a
+where a.NGHD LIKE '2006%'
+/*23. Tìm họ tên khách hàng đã mua hóa đơn có trị giá cao nhất trong năm 2006.*/
+SELECT TOP 1 HOTEN
+FROM KHACHHANG
+JOIN HOADON ON KHACHHANG.MAKH = HOADON.MAKH
+WHERE YEAR(HOADON.NGHD) = 2006
+ORDER BY HOADON.TRIGIA DESC;
